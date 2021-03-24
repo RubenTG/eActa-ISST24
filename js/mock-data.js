@@ -4,7 +4,7 @@ const usuarios = [
 		"name": "profesor1",
 		"asignaturas": [{ "name": "CORE", "curso": "3º", "plan": "GIST" },
 		{ "name": "PROG", "curso": "1º", "plan": "GIST" },
-		{ "name": "CDPS", "curso": "4º", "plan": "GIST" },
+		{ "name": "ISST", "curso": "4º", "plan": "GIST" },
 		{ "name": "APSV", "curso": "1º", "plan": "MUIT" }],
 		"profile": {
 			"isAdmin": true,
