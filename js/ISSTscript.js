@@ -20,11 +20,12 @@ function uploadMarks() {
                                 { data: 'Nota'},
                                 { data: 'Definitiva',
                                 render: function ( data, type, row, meta ) {
+                                    var modal = updateMarkModal(row.Nombre,row.Nota);
                                     if(data === 'true'){
-                                        return '<button type="button" class="btn btn-primary" disabled onClick="searchRevisionStudents()">Revisar</button>';
+                                        return modal + '<button type="button" class="btn btn-primary" disabled data-toggle="modal" data-target="#updateModal'+row.Nombre+'"">Revisar</button>';
 
                                     }else{
-                                     return '<button type="button" class="btn btn-primary" onClick="searchRevisionStudents()">Revisar</button>';
+                                     return modal + '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal'+row.Nombre+'"">Revisar</button>';
                                    }
                                 }
                                 }
@@ -45,4 +46,30 @@ function uploadMarks() {
     } else {
         alert("Please upload a valid CSV file.");
     }
+}
+
+
+function updateMarkModal(name,previousMark) {
+    return (['<div class="modal fade" id="updateModal'+name+'" tabindex="-1" aria-labelledby="updateModal'+name+'" aria-hidden="true" >',
+        '<div class="modal-dialog modal-dialog-centered" >',
+          '<div class="modal-content">',
+            '<div class="modal-header">',
+              '<h5 class="modal-title">Actualizar Nota</h5>',
+            '</div>',
+            '<form id="updateMark">',
+            '<div class="modal-body">',
+                    '<label for="name" class="form-label">Nombre</label>',
+                    '<input size="16" id="name" type="text" class="form-control" placeholder='+name+' readonly>',
+
+                    '<label for="newMark" class="form-label">Nota</label>',
+                    '<input size="16" type="text" class="form-control" id="newMark" placeholder='+previousMark+' required>',
+            '</div>',
+            '<div class="modal-footer">',
+                '<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>',
+              '<button type="submit" class="btn btn-primary" onclick="updateMark(this.form)">Guardar</button>',
+            '</div>',
+            '</form>',
+          '</div>',
+        '</div>',
+    '</div>']).join('');
 }
