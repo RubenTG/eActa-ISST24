@@ -52,6 +52,8 @@ async function newRevision(form){
 var revision = {
   'revisionDateStart' : form.revisionDateStart.value,
   'revisionDateFinish' : form.revisionDateFinish.value,
+  //TODO: Poner de donde se saca el subjectCode de la asignatura
+  //'subjectCode' : localStorage.getItem(subjectCode)
 }
 
 var postJSON = JSON.stringify(revision);
@@ -71,9 +73,8 @@ let response = await fetch('/subject/subjectcode/revision', {
 
 function searchRevisionStudents() {
   var marksTable = $('#marksTable').DataTable()
-
   marksTable
-      .columns(3)
+      .column(3)
       .search('PENDIENTE')
       .draw()
 
