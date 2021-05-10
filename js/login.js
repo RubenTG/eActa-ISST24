@@ -2,6 +2,8 @@ import usuarios from './mock-data.js';
 var user={name:undefined,pass:undefined,isAdmin: undefined};
 var uriProf = "index.html";
 var uriAlum = "ALUMNO.html";
+var uriSecretaria = "Secretaria.html"
+
 var uri;
 
 document.getElementById("inputEmailAddress").value = "";
@@ -28,7 +30,8 @@ function aunt(Usuario) {
         if (usuarios[i].profile.username === Usuario) {
             user.name = Usuario;
             user.pass = usuarios[i].profile.password; 
-            user.isAdmin=usuarios[i].profile.isAdmin; 
+            user.isAdmin=usuarios[i].profile.isAdmin;
+            user.isSecretaria=usuarios[i].profile.isSecretaria;  
             document.getElementById("passPrueba").innerHTML = ""; 
             warning("mailPrueba","",false);
             return;
@@ -44,8 +47,19 @@ input2.addEventListener("change", function () {
     
     if (user.pass!==undefined && user.pass === input2.value) {
         warning("passPrueba","",false);
-        uri=user.isAdmin?uriProf:uriAlum;
-        login(uri);
+        
+        if (user.pass!==undefined && user.pass === input2.value) {
+            warning("passPrueba","",false);
+            if (user.isAdmin === false ) {
+                uri=uriAlum;
+            }else if (user.isSecretaria === true){
+                uri=uriSecretaria;
+            }else{
+                uri=uriProf;
+            }
+            
+            login(uri);
+        }
 
     } else if (user===undefined || user.length === 0) {
         warning("passPrueba"," Password incorrecta",true);
