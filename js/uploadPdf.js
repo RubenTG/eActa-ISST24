@@ -7,6 +7,8 @@ var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.pdf)$/;
         if (typeof (FileReader) != "undefined") {
             var reader = new FileReader();
             reader.onload = function (e) {
+
+				//a partir de aquí
 				var typedarray = new Uint8Array(this.result);
 				PDFJS.getDocument(typedarray).then(function(pdf) {
 				// you can now use *pdf* here
