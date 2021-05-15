@@ -42,7 +42,7 @@ function uploadMarks() {
                 Papa.parse(reader.result, {
                     header: true,
                     skipEmptyLines: true,
-                    complete: function (result) {
+                    complete: async function (result) {
 
                         //Pinta los resultados en la tabla
                         var marksTable = $("#marksTable").DataTable();
@@ -50,9 +50,9 @@ function uploadMarks() {
 
                         //Preparar el JSON y enviarlo
                         for(let i=0;i<result.data.length;i++){
-                            result.data[i].subjectName = localStorage.subjectName;
-                            result.data[i].subjectCode = localStorage.subjectCode;
-                            result.data[i].mailTeacher = localStorage.mailTeacher;
+                            result.data[i].subjectName = localStorage.getItem('subjectName');
+                            result.data[i].subjectCode = localStorage.getItem('subjectCode');
+                            result.data[i].mailTeacher = localStorage.getItem('mailTeacher');
                             result.data[i].revisada = 'NO REVISADA';
                             result.data[i].definitiva = false;
                         }
