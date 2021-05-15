@@ -1,5 +1,5 @@
 //IMPORTAMOS LA LIBRERÍA "pdfmake"
-import pdfMake from 'pdfmake/build/pdfmake.js';
+/*import pdfMake from 'pdfmake/build/pdfmake.js';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -14,7 +14,12 @@ const Alumnos = [
     {"Nombre":"Anna", "primerApellido":"Smi", "segundoApellido":"Doe", "Nota":"Doe" },
     {"Nombre":"Pete", "primerApellido":"Jon", "segundoApellido":"Doe", "Nota":"Doe" }
 ];
-const document = { content: [{text: 'Tribunal', fontStyle: 15, lineHeight: 2}] }
+const document = { content: [{text: 'Tribunal', fontStyle: 15, lineHeight: 2}] }*/
+
+function generar(){
+
+    console.log(1);
+
 TRIBUNAL.forEach(miembro => {
     document.content.push({
         columns: [
@@ -51,3 +56,4 @@ Alumnos.forEach(alumno => {
     });
 });
 pdfMake.createPdf(document).download();
+}

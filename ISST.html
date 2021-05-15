@@ -241,13 +241,13 @@
                         
 
                         <div class="col-xl-3 col-md-3 mb-4">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-success" onClick="generar()">
                                 Descargar Acta
-                              </button>
+                            </button>
   
                         </div>
                         <div class="col-xl-3 col-md-3 mb-4">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#pdf-upload" >
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#subirpdf" >
                                 Subir Acta</button>
   
                         </div>
@@ -295,6 +295,27 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subir pdf modal-->
+    
+    <div class="modal fade" id="subirpdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subir PDF</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="file" id="subirpdf2" class="modal-body"></input>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <div class="btn btn-secondary" onClick="subir()" data-dismiss="modal" type="button" >Subir archivo</div>
                 </div>
             </div>
         </div>
@@ -379,6 +400,8 @@
     <script src="js/revision.js"></script>
     <script src="js/alumnos-revision.js"></script>
     <script src="js/updateMark.js"></script>
+    <script src="js/generatePdf.js"></script>
+    <script src="js/uploadPdf.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
