@@ -1,59 +1,68 @@
-//IMPORTAMOS LA LIBRERÍA "pdfmake"
-/*import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+function generarPDF(){
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    //Falta cambiar ruta y añadir parámetros de la cabecera
+    fetch("./ejemplo.json")
+        .then(res => res.json())
+        .then(data => {
+            var doc = new jsPDF();
+            var finalY = 20;
 
-const TRIBUNAL = [
-    {"Nombre":"John", "primerApellido":"Doe", "segundoApellido":"Doe" }, 
-    {"Nombre":"Anna", "primerApellido":"Smith", "segundoApellido":"Doe"},
-    {"Nombre":"Peter", "primerApellidotName":"Jones", "segundoApellido":"Doe"}
-];
-const Alumnos = [
-    {"Nombre":"John", "primerApellido":"Doe", "segundoApellido":"Doe", "Nota":"Doe" }, 
-    {"Nombre":"Anna", "primerApellido":"Smi", "segundoApellido":"Doe", "Nota":"Doe" },
-    {"Nombre":"Pete", "primerApellido":"Jon", "segundoApellido":"Doe", "Nota":"Doe" }
-];
-const document = { content: [{text: 'Tribunal', fontStyle: 15, lineHeight: 2}] }*/
 
-function generar(){
+            //Comienzo edición fichero PDF
+            doc.setFontSize(20);
+            doc.text('Universidad Politécnica de Madrid',20,finalY);
+            finalY = finalY + 20;
 
-    console.log(1);
 
-TRIBUNAL.forEach(miembro => {
-    document.content.push({
-        columns: [
-            { text: 'Nombre', width: 60 },
-            { text: ':', width: 10 },
-            { text:miembro.Nombre, width: 50 },
-            { text: 'primerApellido', width: 60 },
-            {text: ':', width: 10 }, 
-            { text:miembro.primerApellido, width: 50 },
-            { text: 'segundoApellido', width: 60 },
-            {text: ':', width: 10 }, 
-            { text: miembro.segundoApellido, width: 50}
-        ],
-        lineHeight: 2
-    });
-});
-Alumnos.forEach(alumno => {
-    document.content.push({
-        columns: [
-            { text: 'Nombre', width: 60 },
-            { text: ':', width: 10 },
-            { text: alumno.Nombre, width: 50 },
-            { text: 'primerApellido', width: 60 },
-            { text: ':', width: 10 }, 
-            { text: alumno.primerApellido, width: 50},
-            { text: 'segundoApellido', width: 60 },
-            { text: ':', width: 10 }, 
-            { text: alumno.segundoApellido, width: 50},
-            { text: 'Nota', width: 60 },
-            { text: ':', width: 10 }, 
-            { text: alumno.Nota, width: 50}
-        ],
-        lineHeight: 2
-    });
-});
-pdfMake.createPdf(document).download();
+            doc.setFontSize(12);
+            doc.text('Asignatura: ISST',20,finalY);
+            finalY = finalY + 10;
+            //Pintamos al tribunal
+            var professorsBody = [];
+            data.miembrosTribunal.forEach(function (miembro, i) {
+                professorsBody.push([miembro.professorName,miembro.mailProfessor])
+            });
+            doc.text('Tribunal',20,finalY);
+            finalY = finalY + 5;
+            doc.autoTable({
+                startY: finalY,
+                head: [['Miembro', 'Correo']],
+                body: professorsBody,
+                theme : 'striped',
+                headStyles:{
+                    fillColor: [24,103,183],
+                    halign: 'center'
+                },
+                bodyStyles: {
+                    halign: 'center'
+                },
+              });
+            finalY = finalY + 20*professorsBody.length;
+            //Pintamos las calificaciones
+            var studentsBody = [];
+            data.students.forEach(function (student, i) {
+                studentsBody.push([student.studentName,student.mailStudent,student.nota])
+            });
+            doc.text('Calificaciones',20,finalY);
+            finalY = finalY + 5;
+
+            doc.autoTable({
+                startY: finalY,
+                head: [['Alumno', 'Correo', 'Nota']],
+                body: studentsBody,
+                showHead: 'everyPage',
+                theme : 'striped',
+                headStyles:{
+                    fillColor: [24,103,183],
+                    halign: 'center'
+                },
+                bodyStyles: {
+                    halign: 'center'
+                },
+              });
+            
+            doc.save('Acta.pdf');
+
+        });
 }
+

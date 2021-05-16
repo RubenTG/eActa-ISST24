@@ -1,20 +1,16 @@
 function updateMark(form) {
   var name = form.name.value;
-  var mark = form.newMark.value;
+  var nota = form.newMark.value;
+  var mail = form.mailStudent.value;
 
 
   var revision = {
     'Name': name,
-    'mark': mark,
+    'nota': nota,
+    'mailStudent': mail,
     //TODO: Poner de donde se saca el subjectCode de la asignatura
-    'subjectCode' : localStorage.getItem(subjectCode)
+    //'subjectCode' : localStorage.getItem(subjectCode)
   }
-
-  //Solo actualiza la tabla, no manda los datos
-  var newData = [name, mark];
-  var marksTable = $("#marksTable").DataTable();
-  marksTable.row(name).data(newData).draw();
-
 
   var postJSON = JSON.stringify(revision);
   console.log(postJSON);

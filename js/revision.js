@@ -1,37 +1,40 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
   $('#publishTable').DataTable({
-      "ajax" : {
-        //la url llevará como parámetro el codigo de la asignatura
-        url : "../ISST-revision.json",
-        dataSrc : "revision"
+    "ajax": {
+      //la url llevará como parámetro el codigo de la asignatura
+      url: "../ISST-revision.json",
+      dataSrc: "revision"
+    },
+    "columns": [
+      {
+        data: 'revisionDateStart',
+        render: function (data, type, row, meta) {
+          var date = new Date(data);
+          var day = date.getDate();
+          var month = date.getMonth();
+          var year = date.getFullYear();
+          return '<p>' + day + '/' + month + '/' + year + '</p>'
+        }
       },
-      "columns": [
-          { data: 'revisionDateStart',
-            render : function(data, type, row, meta){
-              var date = new Date(data);
-              var day = date.getDate();
-              var month = date.getMonth();
-              var year = date.getFullYear();
-            return '<p>'+ day + '/'+ month + '/'+ year +'</p>'
-          }
-        },
-          { data: 'revisionDateFinish',
-            render : function(data, type, row, meta){
-              var date = new Date(data);
-              var day = date.getDate();
-              var month = date.getMonth();
-              var year = date.getFullYear();
-              return '<p>'+ day + '/'+ month + '/'+ year +'</p>'
-            }
-          },
-          { data: 'null',
-          "render": function ( data, type, row, meta ) {
-              return '<button type="button" class="btn btn-primary" onClick="searchRevisionStudents()">Ver</button>';
-            }
+      {
+        data: 'revisionDateFinish',
+        render: function (data, type, row, meta) {
+          var date = new Date(data);
+          var day = date.getDate();
+          var month = date.getMonth();
+          var year = date.getFullYear();
+          return '<p>' + day + '/' + month + '/' + year + '</p>'
+        }
+      },
+      {
+        data: 'null',
+        "render": function (data, type, row, meta) {
+          return '<button type="button" class="btn btn-primary" onClick="searchRevisionStudents()">Ver</button>';
+        }
       }
 
-      ]
+    ]
   });
   //fetchRevision();
 });
@@ -48,21 +51,21 @@ async function fetchRevision() {
 };
 */
 
-async function newRevision(form){
-var revision = {
-  'revisionDateStart' : form.revisionDateStart.value,
-  'revisionDateFinish' : form.revisionDateFinish.value,
-  //TODO: Poner de donde se saca el subjectCode de la asignatura
-  //'subjectCode' : localStorage.getItem(subjectCode)
-}
+async function newRevision(form) {
+  var revision = {
+    'revisionDateStart': form.revisionDateStart.value,
+    'revisionDateFinish': form.revisionDateFinish.value,
+    //TODO: Poner de donde se saca el subjectCode de la asignatura
+    //'subjectCode' : localStorage.getItem(subjectCode)
+  }
 
-var postJSON = JSON.stringify(revision);
-console.log(postJSON);
+  var postJSON = JSON.stringify(revision);
+  console.log(postJSON);
 
-let response = await fetch('/subject/subjectcode/revision', {
-  method: 'POST',
-  body: postJSON
-});
+  let response = await fetch('/subject/subjectcode/revision', {
+    method: 'POST',
+    body: postJSON
+  });
 
   let data = await response.json();
   console.log(data);
@@ -74,8 +77,8 @@ let response = await fetch('/subject/subjectcode/revision', {
 function searchRevisionStudents() {
   var marksTable = $('#marksTable').DataTable()
   marksTable
-      .column(3)
-      .search('PENDIENTE')
-      .draw()
+    .column(3)
+    .search('PENDIENTE')
+    .draw()
 
 }

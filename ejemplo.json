@@ -1,0 +1,44 @@
+{
+    "teacherName": "PROFESOR 1",
+    "subjectName": "REDES",
+    "miembrosTribunal" : [
+        {
+            "mailProfessor": "profesor1@alumnos.upm.es",
+            "professorName": "PROFESOR1"
+        },
+        {
+            "mailProfessor": "profesor2@alumnos.upm.es",
+            "professorName": "PROFESOR2"
+        }
+    ],
+    "students": [
+        {
+            "definitiva": false,
+            "mailStudent": "alumno1@alumnos.upm.es",
+            "nota": 9.1,
+            "revisada": "REVISADA",
+            "studentName": "PEDRO"
+        },
+        {
+            "definitiva": false,
+            "mailStudent": "alumno2@alumnos.upm.es",
+            "nota": 1.1,
+            "revisada": "REVISADA",
+            "studentName": "MANOLO"
+        },
+        {
+            "definitiva": false,
+            "mailStudent": "alumno3@alumnos.upm.es",
+            "nota": 9.1,
+            "revisada": "REVISADA",
+            "studentName": "ALBA"
+        },
+        {
+            "definitiva": false,
+            "mailStudent": "alumno4@alumnos.upm.es",
+            "nota": 1.1,
+            "revisada": "REVISADA",
+            "studentName": "MANUELA"
+        }
+    ]
+}

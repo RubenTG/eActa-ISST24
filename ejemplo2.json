@@ -1,0 +1,20 @@
+{
+    "teacherName": "PROFESOR 1",
+    "subjectName": "REDES",
+    "students": [
+        {
+            "definitiva": false,
+            "mailStudent": "alumno3@alumnos.upm.es",
+            "nota": 9.1,
+            "revisada": "REVISADA",
+            "studentName": "ALBA"
+        },
+        {
+            "definitiva": false,
+            "mailStudent": "alumno4@alumnos.upm.es",
+            "nota": 1.1,
+            "revisada": "REVISADA",
+            "studentName": "MANUELA"
+        }
+    ]
+}
