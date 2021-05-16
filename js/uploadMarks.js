@@ -38,7 +38,8 @@ $(document).ready(function () {
     });
 
     subirDatosConFetch();
-    //generarPDF();
+    console.log(Papa);
+
 
 });
 
