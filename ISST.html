@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="esp">
+<html lang="en">
 
 <head>
 
@@ -25,7 +25,7 @@
 
     <!-- Custom styles for datetimepicker -->
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<script>document.getElementById("nameAsignatura").innerText="ppp"</script>
+ 
 
 </head>
 
@@ -39,8 +39,8 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon ">
-                    <i class="fas fa-graduation-cap"></i>
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">eActa</div>
             </a>
@@ -139,7 +139,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Profesor_name</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombre_profesor"></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -172,27 +172,30 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" id="nameAsignatura">Ingeniería de Sistemas y Servicios Telemáticos</h1>
+                    <h1 class="h3 mb-2 text-gray-800" id="nameAsignatura"></h1>
                     
-                    <!-- Tarjeta de fechas de revisión -->
+                    <!-- Tarjeta para mostrar publicación de notas -->
 
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 justify-content-between align-items-center d-flex">
-                            <h6 class="m-0 font-weight-bold text-primary">Fechas de revisión</h6>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">
-                                Configurar fecha de revisión
-                              </button>
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Notas pendientes de revisión</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="publishTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="marksTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class='table-primary'>
-                                            <th>Fecha de publicación</th>
-                                            <th>Fecha de revisión</th>
-                                            <th>Lista de alumnos para revisión</th>
+                                            <th>Nombre</th>
+                                            <th>Nota provisional</th>
+                                            <th>Nota definitiva</th>
+                                            <th>Estado revisión</th>
+                                            <th>Revisión</th>
                                         </tr>
                                     </thead>
+                                    
+                                    <tbody id="revisiones">
+                                      
+                                    </tbody>
                                 </table>
                                 
                             </div>
@@ -202,53 +205,56 @@
 
                     <!-- Tabla de notas -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 justify-content-between align-items-center d-flex">
+                        <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Notas</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-hover">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th>Nombre</th>
+                                            <th>Nota provisional</th>
+                                            <th>Nota definitiva</th>
+                                            <th>Estado revisión</th>
+                                            <th>Revisión</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody id="tabla_profesor">
+                                        <th>Nombre</th>
+                                        <th>Nota provisional</th>
+                                        <th>Nota definitiva</th>
+                                        <th>Estado revisión</th>
+                                        <th>Revisión</th>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+ 
+                    <!-- Botones para subir notas -->
+                    <div class="row justify-content-center">
+                        <div class="col-xl-3 col-md-3 mb-4">
                             <div data-toggle="modal" data-target="#uploadMarksModal" class="btn btn-primary btn-icon-split">
                                 <span class="text">Subir Notas</span>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <table class="table table-bordered" id="marksTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr class='table-primary'>
-                                        <th>Alumno</th>
-                                        <th>Nota</th>
-                                        <th>Revisar</th>
-                                    </tr>
-                                </thead>
-                                
-                                <tbody>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                    </div>
-
-                    <!-- Botones para subir notas -->
-                    <div class="row justify-content-center">
+                       
+                        <!-- Modal para publicar notas -->
                         <div class="col-xl-3 col-md-3 mb-4">
-                            <div data-toggle="modal" data-target="#uploadMarksModal" class="btn btn-warning btn-icon-split">
-                                <span class="text">Subir Notas</span>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-3 mb-4">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">
-                                Configurar fechas de revisión
+                            <button type="button" class="btn btn-info" id="generaPDF" data-toggle="modal" data-target="#publishModal">
+                                Descargar Acta
                               </button>
                         </div>
-                        
+                          
 
-                        <div class="col-xl-3 col-md-3 mb-4">
-                            <button type="button" class="btn btn-success" onClick="generarPDF()">
-                                Descargar Acta
-                            </button>
-  
-                        </div>
-                        <div class="col-xl-3 col-md-3 mb-4">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#subirpdf" >
-                                Subir Acta</button>
+                        <div class="col-xl-3 col-md-3 mb-4"  >
+                            <button type="button" class="btn btn-success"  id='subirActa' data-toggle="modal" data-target="#exampleModal">
+                                Enviar Acta
+                              </button>
   
                         </div>
                        
@@ -300,30 +306,9 @@
         </div>
     </div>
 
-    <!-- Subir pdf modal-->
+        <!-- Upload marks modal-->
     
-    <div class="modal fade" id="subirpdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Subir PDF</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <input type="file" id="subirpdf2" class="modal-body"></input>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <div class="btn btn-secondary" onClick="subir()" data-dismiss="modal" type="button" >Subir archivo</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Upload marks modal-->
-    
-    <div class="modal fade" id="uploadMarksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="uploadMarksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -336,57 +321,34 @@
                 <input type="file" id="marksCSV" class="modal-body"></input>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <div class="btn btn-secondary" onClick="uploadMarks()" data-dismiss="modal" type="button" >Upload</div>
+                    <button class="btn btn-secondary" id="readCSV" data-dismiss="modal" type="button" >Upload</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal para publicar notas -->
-    <div class="modal fade" id='publishModal' tabindex="-1" aria-labelledby="publishModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" >
+      <!-- Upload Acta modal-->
+    
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Publicacion de notas</h5>
-            </div>
-            <form id="newRevisionForm">
-            <div class="modal-body">
-                    
-                    <label for="fechaPublicacion" class="form-label">Fecha de publicación de las notas</label>
-                    <input size="16" type="date" class="form-control" id="revisionDateStart" required>
-
-                    <label for="fechaRevision" class="form-label">Fecha de la Revisión</label>
-                    <input size="16" type="date" class="form-control" id="revisionDateFinish" required>
-
-                
-                
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" onclick="newRevision(this.form)">Guardar</button>
-            </div>
-            </form>
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Upload PDF</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <input type="file" id="marksPDF" class="modal-body"></input>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <button class="btn btn-secondary" id="readPDF" data-dismiss="modal" type="button" >Upload</div>
+              </div>
           </div>
-        </div>
-    </div>
-      
-<!-- Modal para ver los alumnos que han pedido revision -->
-    <div class="modal" id="alumnosRevisionModal" tabindex="-1" aria-labelledby="alumnosRevisionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Alumnos que han pedido revisión</h5>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        </div>
       </div>
-    </div>
-    </div>
-
+  </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -394,32 +356,31 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Custom scripts for all pages-->
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.js></script>
     <!-- Librerias para crear PDFs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script src="https://unpkg.com/jspdf-autotable@3.5.14/dist/jspdf.plugin.autotable.js"></script>
-
-    <!-- PapaParse -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/ISST.js"></script>
-    <script src="js/uploadMarks.js"></script>
-    <script src="js/revision.js"></script>
-    <script src="js/alumnos-revision.js"></script>
-    <script src="js/updateMark.js"></script>
-    <script src="js/generatePdf.js"></script>
-    <script src="js/uploadPdf.js"></script>
-
+    <script src="js/papaparse.min.js" type="module"></script>
+    <script src="js/ISST.js" type="module"></script>
+    
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    
-    
-
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     
+    <!-- DateTimePicker scripts -->
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        $("#datetime").datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+        });
+        </script>
+
+        
 </body>
 
 </html>

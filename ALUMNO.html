@@ -30,8 +30,8 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon ">
-                    <i class="fas fa-graduation-cap"></i>
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">eACTA</div>
             </a>
@@ -46,48 +46,48 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
-
+          
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Asignaturas
-            </div>
+ <!-- Heading -->
+ <div class="sidebar-heading">
+    Asignaturas
+</div>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Segundo curso</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Asignaturas:</h6>
-                        <a class="collapse-item" href="ISST.html">ING1</a>
-                        <a class="collapse-item" href="ISST.html">RDOR</a>
-                        <a class="collapse-item" href="ISST.html">ELMG</a>
-                        <a class="collapse-item" href="ISST.html">COTE</a>
-                    </div>
-                </div>
-            </li>
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+        aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Segundo curso</span>
+    </a>
+    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Asignaturas:</h6>
+            <a class="collapse-item" href="ISST.html">ING1</a>
+            <a class="collapse-item" href="ISST.html">RDOR</a>
+            <a class="collapse-item" href="ISST.html">ELMG</a>
+            <a class="collapse-item" href="ISST.html">COTE</a>
+        </div>
+    </div>
+</li>
 
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cuarto curso</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Asignaturas:</h6>
-                        <a class="collapse-item" href="ISST.html">ISST</a>
-                        <a class="collapse-item" href="ISST.html">DORE</a>
-                    </div>
-                </div>
-            </li>
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Cuarto curso</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Asignaturas:</h6>
+            <a class="collapse-item" href="ISST.html">ISST</a>
+            <a class="collapse-item" href="ISST.html">DORE</a>
+        </div>
+    </div>
+</li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -144,8 +144,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Carlos Ramírez</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombre_alumno"></span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -184,162 +185,113 @@
                         <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
                     </div>
-
+                    <!-- Aquí irán las asignaturas con sus notas -->
+                    <div class="row">
 
                     <!-- Tabla de notas -->
-                    <div class="col-12 card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Notas</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive table-hover">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr class="table-primary">
-                                            <th>Nombre</th>
-                                            <th>Parcial 1</th>
-                                            <th>Parcial 2</th>
-                                            <th>Nota provisional</th>
-                                            <th>Nota definitiva</th>
-                                        </tr>
-                                    </thead>
+                    <div class="card shadow mb-4">
+                          <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Notas</h6>
+                          </div>
+                              <div class="card-body">
+                              <div class="table-responsive table-hover">
+                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                  <tr class="table-primary">
+                                  <th>Nombre</th>
+                                  <th>Nota provisional</th>
+                                  <th>Nota definitiva</th>
+                                  <th>Revisión</th>
+                                  </tr>
+                                  </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td>PROGRAMACIÓN</td>
-                                            <td>5
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#exampleModal">
-                                                    Revisión </button>
-                                            </td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>FTEL</td>
-                                            <td>5</td>
-                                            <td>5 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#exampleModal">
-                                                    Revisión</button></td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ADSW</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CORE</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>RCMO</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ISST</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                            <td>5</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                  <tbody id="tabla_alumno">
+                                  
+                                                  </tbody>
+                                                    </table>
 
-                            </div>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">El resultado de la revisión</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        La revisión ha finalizado y su nota se mantiene como 5.0
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Main Content -->
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Estado de la revisión</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body" id="alert_revision">
+                                                    
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+            <!-- End of Main Content -->
 
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright eActa 2021</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
-                </div>
-                <!-- End of Content Wrapper -->
+          
+            <!-- End of Footer -->
             </div>
-            <!-- Final de la página principal -->
-
-            <!-- Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.html">Logout</a>
-                        </div>
+              <!-- Footer -->
+              <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; eACTA</span>
                     </div>
                 </div>
+            </footer>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- Final de la página principal -->
+
+    <!-- Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages
+    <script src="js/sb-admin-2.min.js"></script>-->
 
-            <!-- Page level plugins -->
-            <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="js/demo/chart-area-demo.js"></script>
-            <script src="js/demo/chart-pie-demo.js"></script>
-
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/alumno.js"></script>
 </body>
 
 </html>
