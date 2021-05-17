@@ -4,11 +4,12 @@ const usuarios = [
 		"name": "profesor1",
 		"asignaturas": [{ "name": "CORE", "curso": "3º", "plan": "GIST" },
 		{ "name": "PROG", "curso": "1º", "plan": "GIST" },
-		{ "name": "ISST", "curso": "4º", "plan": "GIST" },
-		{ "name": "APSV", "curso": "1º", "plan": "MUIT" }],
+		{ "name": "CDPS", "curso": "4º", "plan": "GIST" },
+		{ "name": "APSV", "curso": "1º", "plan": "MUIT" },
+		{ "name": "RSTC", "curso": "2º", "plan": "GIST" },
+		{"name": "ADSW", "curso": "2º", "plan": "GIST" }],
 		"profile": {
 			"isAdmin": true,
-			"isSecretaria": false,
 			"username": "profesor",
 			"password": "profesor",
 			"profileId": null,
@@ -29,7 +30,6 @@ const usuarios = [
 		{ "name": "APSV", "curso": "1º", "plan": "MUIT", "calificación": "9" }],
 		"profile": {
 			"isAdmin": false,
-			"isSecretaria": false,
 			"username": "alumno",
 			"password": "alumno",
 			"profileId": null,
@@ -43,25 +43,6 @@ const usuarios = [
 
 
 
-	},
-	{
-		"id": 3,
-		"name": "secretaria1",
-		"asignaturas": [],
-		"profile": {
-			"isAdmin": true,
-			"isSecretaria": true,
-			"username": "secretaria",
-			"password": "secretaria",
-			"profileId": null,
-			"profileName": null,
-			"photo": {
-				"filename": "spg072.jpg",
-				"mime": "image/jpeg",
-				"url": "https://es.pngtree.com/freepng/vector-users-icon_4144740.html"
-			}
-		}
-	}
-	];
+	}];
 
 export default usuarios;

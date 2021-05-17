@@ -1,78 +1,54 @@
-const secretariajson = [
-	{
-            "email": "paco@alumnos.upm.es",
-            "alumno": "Paco",
-            "asignaturas": [{ "name": "CORE", "curso": "3º", "nota": 3},
-                { "name": "PROG", "curso": "1º", "nota": 3},
-                { "name": "ISST", "curso": "4º", "nota": 3},
-                { "name": "APSV", "curso": "1º", "nota": 3}]
 
-        },
-        {
-            "email": "julian@alumnos.upm.es",
-            "alumno": "Julian",
-            "asignaturas": [{ "name": "CORE", "curso": "3º", "nota": 3},
-                { "name": "PROG", "curso": "1º", "nota": 3},
-                { "name": "ISST", "curso": "4º", "nota": 3},
-                { "name": "APSV", "curso": "1º", "nota": 3}]
 
-        },
-        {
-            "email": "roberto@alumnos.upm.es",
-            "alumno": "Roberto",
-            "asignaturas": [{ "name": "CORE", "curso": "3º", "nota": 3},
-                { "name": "PROG", "curso": "1º", "nota": 3},
-                { "name": "ISST", "curso": "4º", "nota": 3},
-                { "name": "APSV", "curso": "1º", "nota": 3}]
+async function validar() {
+    var mail_alumno = document.getElementById("email_alumno").value;
+if( mail_alumno !== null && mail_alumno.includes("@alumnos.upm.es")){
+  
 
-        },
-        {
-            "email": "rosa@alumnos.upm.es",
-            "alumno": "Rosa",
-            "asignaturas": [{ "name": "CORE", "curso": "3º", "nota": 3},
-                { "name": "PROG", "curso": "1º", "nota": 3},
-                { "name": "ISST", "curso": "4º", "nota": 3},
-                { "name": "APSV", "curso": "1º", "nota": 3}]
+    const alumno = await getSubjects(mail_alumno);
+    var name_student = alumno.studentName;
+    var tr_str;
+    for (let i = 0; i < alumno.subjects.length; i++) {
 
-        }
+        var name_asignatura = alumno.subjects[i].name;
+        var nota = alumno.subjects[i].nota;
+
+        tr_str += "<tr>" +
+            "<td align='center'>" + mail_alumno + "</td>" +
+            "<td align='center'>" + name_student + "</td>" +
+            "<td align='center'>" + name_asignatura + "</td>" +
+            "<td align='center'>" + nota + "</td>" +
+            "</tr>";
+     
+
+    }
+    $("#marksTable tbody").html(tr_str);
+
+}else{ alert("correo mal escrito")}
     
-];
-
-function validar(){
-    
-    var alumno = document.getElementById("email_alumno").value;
-    var alumnojson = JSON.stringify(alumno);
-    var email = null;
-
-
-        for (let i = 0; i < secretariajson.length; i++) {
-            if (secretariajson[i].email === alumno) {
-                    email = secretariajson[i].email;
-                    var alumno = secretariajson[i].alumno;
-                    var asignaturas = secretariajson[i].asignaturas;
-                    
-                    for (let j = 0; j < asignaturas.length; j++) {
-
-                        var tr_str = "<tr>" +
-                        "<td align='center'>" + email + "</td>" +
-                        "<td align='center'>" + alumno + "</td>" +
-                        "<td align='center'>" + asignaturas[j].name + "</td>" +
-                        "<td align='center'>" + asignaturas[j].curso + "</td>" +
-                        "<td align='center'>" + asignaturas[j].nota + "</td>" +
-                        "</tr>";
-                        $("#marksTable tbody").append(tr_str);
-
-                    }
-            }
-        } 
-
-        if (email === null) alert("correo mal escrito")
 }
 
 
 
 
 
+async function getSubjects(alumno) {
+    let url_alumno = 'http://localhost:8080/students/' + alumno + '/subjects';
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + localStorage.getItem("access_token"));
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders
+    };
+
+    return await fetch(url_alumno, requestOptions)
+        .then(res => {
+            if (res.status === 401) { localStorage.clear(); location.href = "login.html"; }
+            if(res.status!== 200){alert("No se ha encontrado el expediente del alumno")}
+            return res.json();
+        })
+}
 
 
 
@@ -99,8 +75,8 @@ function validar(){
                 "<td align='center'>" + asignatura + "</td>" +
                 "</tr>";
                 $("#userTable tbody").append(tr_str);
-            
-            
+
+
             }
         }
     });
